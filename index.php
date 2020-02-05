@@ -1,5 +1,7 @@
-<button onclick="checkCookie();">Probar cookie</button>
-<button onclick="deleteCookie()">Eliminar Cookie</button>
+<?php
+$Nombre = $_REQUEST["affiliate"];
+
+?>
 
 <script type="text/javascript">
 
@@ -13,7 +15,9 @@
 		var expires = "expires=" + d.toUTCString();
 		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 	}
-
+	
+	/*
+	
 	function getCookie(cname){
 		var name = cname + "=";
 		var decodedCookie = decodeURIComponent(document.cookie);
@@ -32,12 +36,19 @@
 
 	function checkCookie(){
 		var affiliate = getCookie("affiliate");
-		if(affiliate != ""){
-			alert("tu cookie es: " + affiliate);
-		}else{
-			affiliate = prompt("por favor ingresa tu nombre", "");
-				setCookie("affiliate", affiliate, 365);
-		}
+		alert(affiliate);
 	}
+	*/
+	
+	function redirection(){
+		var page = "https://events.genndi.com/register/169105139238437045/a78befdc9c/";
+		var utm = "?utm_source=<?php echo $Nombre; ?>&utm_medium=Affiliate&utm_campaign=AlimentacionEmocional";
+		var url = page + utm;
+		location.href = url;	
+	}
+	
+	setCookie("affiliate", "<? echo $Nombre; ?>", 365);
+	//checkCookie();
+	redirection();
 
 </script>
